@@ -1,3 +1,8 @@
+¡Claro! Aquí te dejo el código completo con el HTML, CSS y JavaScript ya integrados. Este código lo puedes reemplazar directamente en tu archivo para que funcione correctamente con la estructura que me proporcionaste. Solo tienes que copiar y pegar todo este bloque en tu archivo.
+
+### Código completo:
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -243,84 +248,6 @@
     <h2>Muebles en L</h2>
     <div class="galeria">
       <div class="producto">
-        <img src="muebles-l/mueble1.jpg" alt="Mueble esquinero moderno - $XXX,XXX">
-        <h3>Mueble Esquinero Moderno</h3>
-        <p>Diseño moderno en forma de L. Perfecto para sala amplia. Precio: <strong>$XXX,XXX</strong></p>
-        <button onclick="agregarAlCarrito('Mueble Esquinero Moderno', 0)">Agregar al carrito</button>
-      </div>
-    </div>
-  </section>
+        <img src="muebles-l/mueble1.jpg" alt="Mueble
+```
 
-  <!-- 🪑 Muebles Capitoneados -->
-  <section id="muebles-capitoneados" class="seccion-productos">
-    <h2>Muebles Capitoneados</h2>
-    <div class="galeria">
-      <div class="producto">
-        <img src="muebles-capitoneados/mueble1.jpg" alt="Mueble capitoneado moderno - $XXX,XXX">
-        <h3>Mueble Capitoneado Moderno</h3>
-        <p>Elegancia y confort en cada detalle. Precio: <strong>$XXX,XXX</strong></p>
-        <button onclick="agregarAlCarrito('Mueble Capitoneado Moderno', 0)">Agregar al carrito</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- 🛒 Carrito -->
-  <section id="carrito">
-    <h2>🛒 Tu Carrito</h2>
-    <ul id="lista-carrito"></ul>
-    <p id="total">Total: $0</p>
-    <button onclick="enviarWhatsApp()">Enviar pedido por WhatsApp</button>
-  </section>
-
-  <footer>
-    <p>📞 Contáctanos al <strong>53575726</strong></p>
-    <p>💬 <a href="https://www.facebook.com/groups/458479160148263/?ref=share&mibextid=NSMWBT" target="_blank">Únete a nuestro grupo en Facebook</a></p>
-    <p>&copy; 2025 Mueble M & M | Diseños Modernos</p>
-  </footer>
-
-  <!-- 💬 Botón flotante de WhatsApp -->
-  <a href="https://wa.me/53575726?text=Hola%20quiero%20información%20sobre%20los%20muebles%20M%20%26%20M" 
-     class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">💬</a>
-
-  <script>
-    let carrito = [];
-
-    function agregarAlCarrito(nombre, precio) {
-      carrito.push({ nombre, precio });
-      mostrarCarrito();
-    }
-
-    function mostrarCarrito() {
-      const lista = document.getElementById('lista-carrito');
-      const total = document.getElementById('total');
-      lista.innerHTML = '';
-      let suma = 0;
-
-      carrito.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `${item.nombre} - $${item.precio.toLocaleString()}`;
-        lista.appendChild(li);
-        suma += item.precio;
-      });
-
-      total.textContent = `Total: $${suma.toLocaleString()}`;
-    }
-
-    function enviarWhatsApp() {
-      if (carrito.length === 0) {
-        alert("Tu carrito está vacío.");
-        return;
-      }
-      let mensaje = "🛋️ *Pedido desde el catálogo Mueble M & M:*\n\n";
-      carrito.forEach(item => {
-        mensaje += `• ${item.nombre} - $${item.precio.toLocaleString()}\n`;
-      });
-      const total = carrito.reduce((acc, item) => acc + item.precio, 0);
-      mensaje += `\n💰 Total: $${total.toLocaleString()}\n\n📞 Enviado desde el catálogo web.`;
-      const url = `https://wa.me/53575726?text=${encodeURIComponent(mensaje)}`;
-      window.open(url, '_blank');
-    }
-  </script>
-
-</body>
-</html>
