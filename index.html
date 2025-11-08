@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mueble M & M - Catálogo Moderno</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #000;
+      color: #d4af37;
+      text-align: center;
+      padding: 20px 10px 30px;
+    }
+
+    header svg {
+      width: 220px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    header p {
+      color: #d4af37;
+      font-size: 1.1em;
+      margin: 0;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px 0;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .seccion-productos {
+      padding: 30px 15px;
+      text-align: center;
+    }
+
+    .seccion-productos h2 {
+      color: #c49a6c;
+      margin-bottom: 20px;
+    }
+
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .producto {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 300px;
+      padding: 15px;
+    }
+
+    .producto img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    button {
+      background-color: #c49a6c;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #a87e53;
+    }
+
+    #carrito {
+      background-color: #fff;
+      margin: 30px auto;
+      padding: 20px;
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background-color: #000;
+      color: #d4af37;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Botón flotante de WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      background-color: #1ebc57;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- 🪄 Logo SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="60" viewBox="0 0 400 100" style="display:block;margin:auto;">
+      <rect width="100%" height="100%" fill="none"/>
+      <text x="10" y="65" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#d4af37">
+        Mueble
+      </text>
+      <text x="170" y="65" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#ffffff">
+        M & M
+      </text>
+      <circle cx="350" cy="45" r="10" fill="#d4af37"/>
+      <circle cx="370" cy="45" r="10" fill="#d4af37"/>
+      <rect x="340" y="25" width="40" height="20" fill="#d4af37" rx="3"/>
+      <line x1="340" y1="25" x2="330" y2="15" stroke="#d4af37" stroke-width="3"/>
+    </svg>
+
+    <p>Estilo moderno, elegancia y comodidad en cada detalle</p>
+  </header>
+
+  <nav>
+    <a href="#camas">🛏️ Camas</a>
+    <a href="#muebles-l">🛋️ Muebles en L</a>
+    <a href="#muebles-capitoneados">🪑 Capitoneados</a>
+    <a href="#carrito">🛒 Carrito</a>
+  </nav>
+
+  <!-- 🛏️ Sección de Camas -->
+  <section id="camas" class="seccion-productos">
+    <h2>Camas Modernas</h2>
+    <div class="galeria">
+
+      <div class="producto">
+        <img src="camas/cama1.jpg" alt="Cama Camera moderna color madera - $160,000">
+        <h3>Cama Camera Moderna</h3>
+        <p>Estilo moderno, color madera claro. Precio: <strong>$160,000</strong></p>
+        <button onclick="agregarAlCarrito('Cama Camera Moderna', 160000)">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="camas/cama2.jpg" alt="Cama Queen y King moderna - $180,000">
+        <h3>Cama Queen / King</h3>
+        <p>Disponible en tamaño Queen, King y Matrimonial. Precio: <strong>$180,000</strong></p>
+        <button onclick="agregarAlCarrito('Cama Queen / King', 180000)">Agregar al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="camas/cama3.jpg" alt="Cama roja moderna - $170,000">
+        <h3>Cama Roja Moderna</h3>
+        <p>Disponible en Queen, King y Matrimonial. Precio: <strong>$170,000</strong></p>
+        <button onclick="agregarAlCarrito('Cama Roja Moderna', 170000)">Agregar al carrito</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🛋️ Muebles en L -->
+  <section id="muebles-l" class="seccion-productos">
+    <h2>Muebles en L</h2>
+    <div class="galeria">
+      <div class="producto">
+        <img src="muebles-l/mueble1.jpg" alt="Mueble esquinero moderno - $XXX,XXX">
+        <h3>Mueble Esquinero Moderno</h3>
+        <p>Diseño moderno en forma de L. Perfecto para sala amplia. Precio: <strong>$XXX,XXX</strong></p>
+        <button onclick="agregarAlCarrito('Mueble Esquinero Moderno', 0)">Agregar al carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🪑 Muebles Capitoneados -->
+  <section id="muebles-capitoneados" class="seccion-productos">
+    <h2>Muebles Capitoneados</h2>
+    <div class="galeria">
+      <div class="producto">
+        <img src="muebles-capitoneados/mueble1.jpg" alt="Mueble capitoneado moderno - $XXX,XXX">
+        <h3>Mueble Capitoneado Moderno</h3>
+        <p>Elegancia y confort en cada detalle. Precio: <strong>$XXX,XXX</strong></p>
+        <button onclick="agregarAlCarrito('Mueble Capitoneado Moderno', 0)">Agregar al carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🛒 Carrito -->
+  <section id="carrito">
+    <h2>🛒 Tu Carrito</h2>
+    <ul id="lista-carrito"></ul>
+    <p id="total">Total: $0</p>
+    <button onclick="enviarWhatsApp()">Enviar pedido por WhatsApp</button>
+  </section>
+
+  <footer>
+    <p>📞 Contáctanos al <strong>53575726</strong></p>
+    <p>💬 <a href="https://www.facebook.com/groups/458479160148263/?ref=share&mibextid=NSMWBT" target="_blank">Únete a nuestro grupo en Facebook</a></p>
+    <p>&copy; 2025 Mueble M & M | Diseños Modernos</p>
+  </footer>
+
+  <!-- 💬 Botón flotante de WhatsApp -->
+  <a href="https://wa.me/53575726?text=Hola%20quiero%20información%20sobre%20los%20muebles%20M%20%26%20M" 
+     class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">💬</a>
+
+  <script>
+    let carrito = [];
+
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      mostrarCarrito();
+    }
+
+    function mostrarCarrito() {
+      const lista = document.getElementById('lista-carrito');
+      const total = document.getElementById('total');
+      lista.innerHTML = '';
+      let suma = 0;
+
+      carrito.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.nombre} - $${item.precio.toLocaleString()}`;
+        lista.appendChild(li);
+        suma += item.precio;
+      });
+
+      total.textContent = `Total: $${suma.toLocaleString()}`;
+    }
+
+    function enviarWhatsApp() {
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío.");
+        return;
+      }
+      let mensaje = "🛋️ *Pedido desde el catálogo Mueble M & M:*\n\n";
+      carrito.forEach(item => {
+        mensaje += `• ${item.nombre} - $${item.precio.toLocaleString()}\n`;
+      });
+      const total = carrito.reduce((acc, item) => acc + item.precio, 0);
+      mensaje += `\n💰 Total: $${total.toLocaleString()}\n\n📞 Enviado desde el catálogo web.`;
+      const url = `https://wa.me/53575726?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+
+</body>
+</html>
