@@ -262,21 +262,57 @@
     </div>
   </section>
 
-  <!-- 🛒 Carrito -->
-  <section id="carrito">
-    <h2>🛒 Tu Carrito</h2>
-    <ul id="lista-carrito"></ul>
-    <p id="total">Total: $0</p>
-    <button onclick="enviarWhatsApp()">Enviar pedido por WhatsApp</button>
-  </section>
+    <script>
+    // Arreglo para almacenar los productos del carrito
+    let carrito = [];
 
-  <footer>
-    <p>📞 Contáctanos al <strong>53575726</strong></p>
-    <p>&copy; 2025 Mueble M & M | Diseños Modernos</p>
-  </footer>
+    // Función para agregar productos al carrito
+    function agregarAlCarrito(nombreProducto, precio) {
+      // Añadir el producto al carrito (con nombre y precio)
+      carrito.push({ nombre: nombreProducto, precio: parseInt(precio) });
 
-  <!-- 💬 Botón flotante de WhatsApp -->
-  <
+      // Actualizar la visualización del carrito
+      actualizarCarrito();
+    }
 
-          
+    // Función para actualizar el carrito en el HTML
+    function actualizarCarrito() {
+      // Obtener el contenedor del carrito y el total
+      const listaCarrito = document.getElementById("lista-carrito");
+      const total = document.getElementById("total");
 
+      // Limpiar la lista del carrito para volver a mostrarla
+      listaCarrito.innerHTML = "";
+
+      // Calcular el total
+      let sumaTotal = 0;
+
+      // Recorrer los productos en el carrito y agregarlos a la lista
+      carrito.forEach((producto, index) => {
+        const li = document.createElement("li");
+        li.textContent = `${producto.nombre} - $${producto.precio}`;
+        listaCarrito.appendChild(li);
+        sumaTotal += producto.precio;
+      });
+
+      // Mostrar el total en la página
+      total.textContent = `Total: $${sumaTotal}`;
+    }
+
+    // Función para enviar el carrito a WhatsApp
+    function enviarWhatsApp() {
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío. Añade productos primero.");
+        return;
+      }
+
+      let mensaje = "Tu pedido:\n";
+      carrito.forEach((producto) => {
+        mensaje += `${producto.nombre} - $${producto.precio}\n`;
+      });
+      mensaje += `\nTotal: $${carrito.reduce((total, producto) => total + producto.precio, 0)}`;
+      
+      const url = `https://wa.me/53575726?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    }
+  </script>
