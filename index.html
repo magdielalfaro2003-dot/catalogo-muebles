@@ -180,7 +180,7 @@
     <a href="#carrito">🛒 Carrito</a>
   </nav>
 
-  <!-- 🛏️ Sección de Camas -->
+   <!-- 🛏️ Sección de Camas -->
   <section id="camas" class="seccion-productos">
     <h2>Camas Modernas</h2>
     <div class="galeria">
@@ -195,14 +195,12 @@
           <option value="160000">Cama Camera - $160,000</option>
           <option value="170000">Cama Queen - $170,000</option>
           <option value="180000">Cama King - $180,000</option>
+          <option value="150000">Cama Matrimonial - $150,000</option>
         </select>
         
-        <button onclick="agregarAlCarrito('Cama Camera Moderna', parseInt(document.getElementById('cama1-tamano').value))">Agregar al carrito</button>
+        <button onclick="agregarAlCarrito('Cama Camera Moderna', document.getElementById('cama1-tamano').value)">Agregar al carrito</button>
       </div>
 
-    </div>
-  </section>
-  
       <!-- Producto 2 -->
       <div class="producto">
         <img src="camas/cama2.jpg" alt="Cama King moderna - $180,000">
