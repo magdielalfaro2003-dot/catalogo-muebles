@@ -1,8 +1,3 @@
-¡Claro! Aquí te dejo el código completo con el HTML, CSS y JavaScript ya integrados. Este código lo puedes reemplazar directamente en tu archivo para que funcione correctamente con la estructura que me proporcionaste. Solo tienes que copiar y pegar todo este bloque en tu archivo.
-
-### Código completo:
-
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -162,7 +157,6 @@
 <body>
 
   <header>
-    <!-- 🪄 Logo SVG -->
     <svg xmlns="http://www.w3.org/2000/svg" width="200" height="60" viewBox="0 0 400 100" style="display:block;margin:auto;">
       <rect width="100%" height="100%" fill="none"/>
       <text x="10" y="65" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#d4af37">
@@ -176,8 +170,7 @@
       <rect x="340" y="25" width="40" height="20" fill="#d4af37" rx="3"/>
       <line x1="340" y1="25" x2="330" y2="15" stroke="#d4af37" stroke-width="3"/>
     </svg>
-
-    <p>Estilo moderno, elegancia y comodidad (LO PUEDES PERSONALIZAR A TU GUSTO)</p>
+    <p>Estilo moderno, elegancia y comodidad en cada detalle</p>
   </header>
 
   <nav>
@@ -204,37 +197,7 @@
           <option value="180000">Cama King - $180,000</option>
         </select>
         
-        <button onclick="agregarAlCarrito('Cama Camera Moderna', document.getElementById('cama1-tamano').value)">Agregar al carrito</button>
-      </div>
-
-      <!-- Producto 2 -->
-      <div class="producto">
-        <img src="camas/cama2.jpg" alt="Cama King moderna - $180,000">
-        <h3>Cama King Moderna</h3>
-        <p>Disponible en tamaño Camera, Queen, King y Matrimonial.</p>
-        
-        <select id="cama2-tamano">
-          <option value="160000">Cama Camera - $160,000</option>
-          <option value="170000">Cama Queen - $170,000</option>
-          <option value="180000">Cama King - $180,000</option>
-        </select>
-        
-        <button onclick="agregarAlCarrito('Cama King Moderna', document.getElementById('cama2-tamano').value)">Agregar al carrito</button>
-      </div>
-
-      <!-- Producto 3 -->
-      <div class="producto">
-        <img src="camas/cama3.jpg" alt="Cama Queen moderna - $170,000">
-        <h3>Cama Queen Moderna</h3>
-        <p>Disponible en tamaño Camera, Queen, King y Matrimonial.</p>
-        
-        <select id="cama3-tamano">
-          <option value="160000">Cama Camera - $160,000</option>
-          <option value="170000">Cama Queen - $170,000</option>
-          <option value="180000">Cama King - $180,000</option>
-        </select>
-        
-        <button onclick="agregarAlCarrito('Cama Queen Moderna', document.getElementById('cama3-tamano').value)">Agregar al carrito</button>
+        <button onclick="agregarAlCarrito('Cama Camera Moderna', parseInt(document.getElementById('cama1-tamano').value))">Agregar al carrito</button>
       </div>
 
     </div>
@@ -245,58 +208,42 @@
     <h2>Muebles en L</h2>
     <div class="galeria">
       <div class="producto">
-        <img src="muebles-l/mueble1.jpg" alt="Mueble
-</div>
-
+        <img src="muebles-l/mueble1.jpg" alt="Mueble esquinero moderno - $XXX,XXX">
+        <h3>Mueble Esquinero Moderno</h3>
+        <p>Diseño moderno en forma de L. Perfecto para sala amplia.</p>
+        <button onclick="agregarAlCarrito('Mueble Esquinero Moderno', 300000)">Agregar al carrito</button>
+      </div>
     </div>
   </section>
-          
- <!-- 🪑 Muebles Capitoneados -->
+
+  <!-- 🪑 Muebles Capitoneados -->
   <section id="muebles-capitoneados" class="seccion-productos">
-    <h2>Muebles en capitoneados</h2>
+    <h2>Muebles Capitoneados</h2>
     <div class="galeria">
       <div class="producto">
-        <img src="muebles-capitoneados/mueble1.jpg" alt="Mueble
-</div>
-
+        <img src="muebles-capitoneados/mueble1.jpg" alt="Mueble capitoneado moderno - $XXX,XXX">
+        <h3>Mueble Capitoneado Moderno</h3>
+        <p>Elegancia y confort en cada detalle. Precio: <strong>$XXX,XXX</strong></p>
+        <button onclick="agregarAlCarrito('Mueble Capitoneado Moderno', 350000)">Agregar al carrito</button>
+      </div>
     </div>
   </section>
+
+  <!-- 🛒 Carrito -->
+  <section id="carrito">
+    <h2>🛒 Tu Carrito</h2>
+    <ul id="lista-carrito"></ul>
+    <p id="total">Total: $0</p>
+    <button onclick="enviarWhatsApp()">Enviar pedido por WhatsApp</button>
+  </section>
+
+  <footer>
+    <p>📞 Contáctanos al <strong>53575726</strong></p>
+    <p>&copy; 2025 Mueble M & M | Diseños Modernos</p>
+  </footer>
+
+  <!-- 💬 Botón flotante de WhatsApp -->
+  <
+
           
-          let carrito = [];
-
-function agregarAlCarrito(nombre, precio) {
-  carrito.push({ nombre, precio });
-  mostrarCarrito();
-}
-
-function mostrarCarrito() {
-  const lista = document.getElementById('lista-carrito');
-  const total = document.getElementById('total');
-  lista.innerHTML = '';
-  let suma = 0;
-
-  carrito.forEach(item => {
-    const li = document.createElement('li');
-    li.textContent = `${item.nombre} - $${item.precio.toLocaleString()}`;
-    lista.appendChild(li);
-    suma += item.precio;
-  });
-
-  total.textContent = `Total: $${suma.toLocaleString()}`;
-}
-
-function enviarWhatsApp() {
-  if (carrito.length === 0) {
-    alert("Tu carrito está vacío.");
-    return;
-  }
-  let mensaje = "🛋️ *Pedido desde el catálogo Mueble M & M:*\n\n";
-  carrito.forEach(item => {
-    mensaje += `• ${item.nombre} - $${item.precio.toLocaleString()}\n`;
-  });
-  const total = carrito.reduce((acc, item) => acc + item.precio, 0);
-  mensaje += `\n💰 Total: $${total.toLocaleString()}\n\n📞 Enviado desde el catálogo web.`;
-  const url = `https://wa.me/53575726?text=${encodeURIComponent(mensaje)}`;
-  window.open(url, '_blank');
-}
 
