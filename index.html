@@ -246,5 +246,57 @@
     <div class="galeria">
       <div class="producto">
         <img src="muebles-l/mueble1.jpg" alt="Mueble
-```
+</div>
+
+    </div>
+  </section>
+          
+ <!-- 🪑 Muebles Capitoneados -->
+  <section id="muebles-capitoneados" class="seccion-productos">
+    <h2>Muebles en capitoneados</h2>
+    <div class="galeria">
+      <div class="producto">
+        <img src="muebles-capitoneados/mueble1.jpg" alt="Mueble
+</div>
+
+    </div>
+  </section>
+          
+          let carrito = [];
+
+function agregarAlCarrito(nombre, precio) {
+  carrito.push({ nombre, precio });
+  mostrarCarrito();
+}
+
+function mostrarCarrito() {
+  const lista = document.getElementById('lista-carrito');
+  const total = document.getElementById('total');
+  lista.innerHTML = '';
+  let suma = 0;
+
+  carrito.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = `${item.nombre} - $${item.precio.toLocaleString()}`;
+    lista.appendChild(li);
+    suma += item.precio;
+  });
+
+  total.textContent = `Total: $${suma.toLocaleString()}`;
+}
+
+function enviarWhatsApp() {
+  if (carrito.length === 0) {
+    alert("Tu carrito está vacío.");
+    return;
+  }
+  let mensaje = "🛋️ *Pedido desde el catálogo Mueble M & M:*\n\n";
+  carrito.forEach(item => {
+    mensaje += `• ${item.nombre} - $${item.precio.toLocaleString()}\n`;
+  });
+  const total = carrito.reduce((acc, item) => acc + item.precio, 0);
+  mensaje += `\n💰 Total: $${total.toLocaleString()}\n\n📞 Enviado desde el catálogo web.`;
+  const url = `https://wa.me/53575726?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, '_blank');
+}
 
