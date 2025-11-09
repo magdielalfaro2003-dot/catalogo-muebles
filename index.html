@@ -264,8 +264,64 @@
 
   <!-- 🛒 Carrito -->
   <section id=¡="carrito"
-  <h2>🛒 tu carrito</h2>
-   <ul id="total">
+   <h2>🛒 tu carrito</h2>
+   <ul id="lista-carrito"></ul>
+   <p id="total">Total: $0</p>
+   <button onclick="enviarWhatsApp()">Enviar pedido por WhatsApp</button>
+  </section>
+ 
+  <footer>
+    <p>📞 Contáctanos al <strong>53575726</strong></p>
+    <p>💬 <a href="https://www.facebook.com/groups/458479160148263/?ref=share&mibextid=NSMWBT" target="_blank">Únete a nuestro grupo en Facebook</a></p>
+    <p>&copy; 2025 Mueble M & M | Diseños Modernos</p>
+  </footer>
+
+  <!-- 💬 Botón flotante de WhatsApp -->
+  <a href="https://wa.me/53575726?text=Hola%20quiero%20información%20sobre%20los%20muebles%20M%20%26%20M" 
+     class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">💬</a>
+
+  <script>
+    let carrito = [];
+
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      mostrarCarrito();
+    }
+
+    function mostrarCarrito() {
+      const lista = document.getElementById('lista-carrito');
+      const total = document.getElementById('total');
+      lista.innerHTML = '';
+      let suma = 0;
+
+      carrito.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.nombre} - $${item.precio.toLocaleString()}`;
+        lista.appendChild(li);
+        suma += item.precio;
+      });
+
+      total.textContent = `Total: $${suma.toLocaleString()}`;
+    }
+
+    function enviarWhatsApp() {
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío.");
+        return;
+      }
+      let mensaje = "🛋️ *Pedido desde el catálogo Mueble M & M:*\n\n";
+      carrito.forEach(item => {
+        mensaje += `• ${item.nombre} - $${item.precio.toLocaleString()}\n`;
+      });
+      const total = carrito.reduce((acc, item) => acc + item.precio, 0);
+      mensaje += `\n💰 Total: $${total.toLocaleString()}\n\n📞 Enviado desde el catálogo web.`;
+      const url = `https://wa.me/53575726?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+
+</body>
+</html>
 
   
     
