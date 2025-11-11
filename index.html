@@ -192,23 +192,23 @@
     .whatsapp-float:hover {
       background-color: #1ebc57;
     }
-    /* --- Estilo mejorado para el selector de precios --- */
+    /* --- ESTILO DEL SELECTOR DE PRECIOS --- */
     .producto select {
       width: 95%;
       font-size: 1.1em;
       padding: 12px 14px;
       border-radius: 8px;
-      border: 2px solid #d4af37; /* Dorado */
+      border: 2px solid #d4af37; /* Borde dorado */
       background-color: #000; /* Fondo negro elegante */
       color: #d4af37; /* Texto dorado */
       font-weight: bold;
       text-align: center;
       text-align-last: center;
-      white-space: normal; /* Permite que el texto se parta en varias líneas */
-      word-wrap: break-word; /* Evita que se corte */
-      overflow-wrap: break-word; 
-      height: auto; /* Ajusta el alto si el texto es largo */
-      min-height: 50px;
+      white-space: normal; /* Permite que el texto se divida en varias líneas */
+      word-wrap: break-word; 
+      overflow-wrap: break-word;
+      height: auto;
+      min-height: 60px;
       cursor: pointer;
       transition: all 0.3s ease;
     }
@@ -218,7 +218,16 @@
       box-shadow: 0 0 10px #d4af37;
     }
 
-/* --- Botón de agregar al carrito --- */
+    /* --- OPCIONES INTERNAS DEL SELECT --- */
+    .producto select option {
+      background-color: #000;
+      color: #d4af37;
+      padding: 10px;
+      font-size: 1em;
+      border-bottom: 1px solid #d4af37;
+    }
+
+    /* --- BOTÓN DE CARRITO --- */
     .producto button {
       width: 95%;
       font-size: 1.1em;
@@ -237,8 +246,6 @@
       background-color: #fff3b0;
       transform: scale(1.05);
     }
-
- 
   </style>
 </head>
 <body>
