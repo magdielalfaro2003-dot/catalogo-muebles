@@ -246,6 +246,54 @@
       background-color: #fff3b0;
       transform: scale(1.05);
     }
+    /* 💰 Estilos del carrito */
+    #carrito {
+      background-color: rgba(255, 255, 255, 0.95); /* Fondo claro para que se lea bien */
+      color: #000; /* Texto negro */
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 600px;
+      margin: 40px auto;
+    }
+
+    #carrito h2 {
+      color: #d4af37; /* Dorado elegante */
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #lista-carrito li {
+      list-style: none;
+      padding: 8px 0;
+      border-bottom: 1px solid #ccc;
+      font-weight: bold;
+    }
+
+    #total {
+      text-align: right;
+      font-size: 18px;
+      color: #000;
+      font-weight: bold;
+    }
+
+    #carrito button {
+      background-color: #d4af37;
+      color: #000;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    #carrito button:hover {
+      background-color: #b68a2d;
+    }
+      
   </style>
 </head>
 <body>
@@ -289,13 +337,13 @@
         <img src="camas/cama2.jpg" alt="Cama moderna 2" loading="lazy">
         <h3>Cama Moderna 2</h3>
         <p>Disponible en tamaño 3/4,Camera,Queen,King y de todos los colores.</p>
-        <select id="cama2">
+        <select id="cama2-tamano">
           <option value="155000">3/4(1.90cm x 1.20cm) - $155,000</option>
           <option value="160000">Camera(1.90cm x 135cm) - $160,000</option>
           <option value="170000">Queen(1.90 o 2m x 1.60cm) - $170,000</option>
           <option value="180000">King(2m x 2m) - $180,000</option>
         </select>
-         <button onclick="agregarAlCarrito('Cama Moderna', document.getElementById('cama2-tamano').value)">🛒 Agregar al carrito</button>
+         <button onclick="agregarAlCarrito('Cama Moderna 2', document.getElementById('cama2-tamano').value)">🛒 Agregar al carrito</button>
 </div>
 
       <!-- Cama 3 -->
@@ -303,28 +351,28 @@
         <img src="camas/cama3.jpg" alt="Cama moderna 3" loading="lazy">
         <h3>Cama Moderna 3</h3>
         <p>Disponible en tamaño 3/4,Camera,Queen,King y de todos los colores.</p>
-        <select id="cama3">
+        <select id="cama3-tamano">
           <option value="145000">3/4(1.90cm x 1.20cm) - $145,000</option>
           <option value="150000">Camera(1.90cm x 135cm) - $150,000</option>
           <option value="160000">Queen(1.90 o 2m x 1.60cm) - $160,000</option>
           <option value="170000">King(2m x 2m) - $170,000</option>
         </select>
-        <button onclick="agregarAlCarrito('Cama Moderna 3', document.getElementById('cama3').value)">Agregar 🛒</button>
-      </div>
+         <button onclick="agregarAlCarrito('Cama Moderna 3', document.getElementById('cama3-tamano').value)">🛒 Agregar al carrito</button>
+</div>
 
       <!-- Cama 4 -->
       <div class="producto">
         <img src="camas/cama4.jpg" alt="Cama moderna 4" loading="lazy">
         <h3>Cama Moderna 4</h3>
         <p>Disponible en tamaño 3/4,Camera,Queen,King y de todos los colores.</p>
-        <select id="cama4">
+        <select id="cama4-tamano">
           <option value="125000">3/4(1.90cm x 1.20cm) - $125,000</option>
           <option value="130000">Camera(1.90cm x 135cm) - $130,000</option>
           <option value="140000">Queen(1.90 o 2m x 1.60cm) - $140,000</option>
           <option value="150000">King(2m x 2m) - $150,000</option>
         </select>
-        <button onclick="agregarAlCarrito('Cama Moderna 4', document.getElementById('cama4').value)">Agregar 🛒</button>
-      </div>
+         <button onclick="agregarAlCarrito('Cama Moderna 4', document.getElementById('cama4-tamano').value)">🛒 Agregar al carrito</button>
+</div>
 
       <!-- Cama 5 -->
       <div class="producto">
