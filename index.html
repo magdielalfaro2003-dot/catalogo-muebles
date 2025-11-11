@@ -934,16 +934,15 @@
   <script>
     let carrito = [];
 
-    function agregarAlCarrito(nombre, precio) {
-      carrito.push({ nombre, precio: Number(precio) });
+    function agregarAlCarrito(nombre, selectId) {
+      const select = document.getElementById(selectId);
+      const opcionTexto = select.options[select.selectedIndex].text; // Ej: "Cama Queen - $170,000"
+      const precio = parseInt(select.value;
+      
+      carrito.push({ nombre: `${nombre} (${opcionTexto})`, precio });
       mostrarCarrito();
-    }
-
-    function mostrarCarrito() {
-      const lista = document.getElementById("lista-carrito");
-      const total = document.getElementById("total");
-      lista.innerHTML = "";
-      let suma = 0;
+        lista.innerHTML = "";
+        let suma = 0;
 
       carrito.forEach(item => {
         const li = document.createElement("li");
