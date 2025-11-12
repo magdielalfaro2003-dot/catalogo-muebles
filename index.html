@@ -963,69 +963,66 @@
     </div>
   </section>
 
-  <!-- 🛒 Carrito -->
+  <!-- 🛒 CARRITO -->
   <div id="carrito">
     <h2>🛒 Carrito de Compras</h2>
     <ul id="lista-carrito"></ul>
     <p id="total">Total: $0</p>
-    <button onclick="enviarPedido()">📲 Enviar pedido por WhatsApp</button>
-  <div>
+    <button class="boton-carrito" onclick="enviarPedido()">📲 Enviar pedido por WhatsApp</button>
+  </div>
 
-  <!-- 🧠 Script del carrito -->
+  <footer>
+    <p>📞 Contáctanos al <strong>53575726</strong></p>
+    <p>💬 <a href="https://www.facebook.com/groups/458479160148263/?ref=share&mibextid=NSMWBT" target="_blank">Únete a nuestro grupo en Facebook</a></p>
+    <p>&copy; 2025 Mueble M & M | Diseños Modernos</p>
+  </footer>
+
   <script>
-   let carrito = [];
+    let carrito = [];
 
-   // Agregar cama (con selección de tamaño)
-   function agregarCama(nombre, selectId) {
-    const select = document.getElementById(selectId);
-    const texto = select.options[select.selectedIndex].text;
-    const precio = parseInt(select.value);
-
-    carrito.push({ nombre: `${nombre} (${texto})`, precio });
-    mostrarCarrito();
-  }
-
-  // Agregar muebles (precio fijo)
-  function agregarAlCarrito(nombre, precio) {
-    carrito.push({ nombre, precio });
-    mostrarCarrito();
-  }
-
-  // Mostrar carrito
-  function mostrarCarrito() {
-    const lista = document.getElementById("lista-carrito");
-    const total = document.getElementById("total");
-    lista.innerHTML = "";
-
-    let suma = 0;
-    carrito.forEach(item => {
-      const li = document.createElement("li");
-      li.textContent = `${item.nombre} - $${item.precio.toLocaleString()}`;
-      lista.appendChild(li);
-      suma += item.precio;
-    });
-
-    total.textContent = `Total: $${suma.toLocaleString()}`;
-  }
-
-  // Enviar pedido a WhatsApp
-  function enviarPedido() {
-    const numero = "53575726"; // 👈 tu número de WhatsApp
-    if (carrito.length === 0) {
-      alert("Tu carrito está vacío 🛒");
-      return;
+    function agregarCama(nombre, selectId) {
+      const select = document.getElementById(selectId);
+      const texto = select.options[select.selectedIndex].text;
+      const precio = parseInt(select.value);
+      carrito.push({ nombre: `${nombre} (${texto})`, precio });
+      mostrarCarrito();
     }
 
-    const mensaje = encodeURIComponent(
-      "🪑 *Pedido Muebles M&M* 🪑\n\n" +
-      carrito.map(item => `✅ ${item.nombre} - $${item.precio.toLocaleString()}`).join("\n") +
-      `\n\n💰 Total: $${carrito.reduce((s, i) => s + i.precio, 0).toLocaleString()}`
-    );
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      mostrarCarrito();
+    }
 
-    window.open(`https://wa.me/53${numero}?text=${mensaje}`, "_blank");
-  }
-</script>
-    
+    function mostrarCarrito() {
+      const lista = document.getElementById("lista-carrito");
+      const total = document.getElementById("total");
+      lista.innerHTML = "";
+      let suma = 0;
+      carrito.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.nombre} - $${item.precio.toLocaleString()}`;
+        lista.appendChild(li);
+        suma += item.precio;
+      });
+      total.textContent = `Total: $${suma.toLocaleString()}`;
+    }
+
+    function enviarPedido() {
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío 🛒");
+        return;
+      }
+
+      const numero = "53575726";
+      const mensaje = encodeURIComponent(
+        "🪑 *Pedido desde Mueble M & M* 🪑\n\n" +
+        carrito.map(i => `• ${i.nombre} - $${i.precio.toLocaleString()}`).join("\n") +
+        `\n\n💰 *Total:* $${carrito.reduce((a, i) => a + i.precio, 0).toLocaleString()}`
+      );
+      window.open(`https://wa.me/53${numero}?text=${mensaje}`, "_blank");
+
+    }
+  </script> 
 </body>
 </html>
 
