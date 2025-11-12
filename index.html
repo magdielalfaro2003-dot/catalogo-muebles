@@ -925,7 +925,7 @@
 
       <!-- 🛋️ Mueble 1 -->
       <div class="producto">
-        <img src="muebles-l/mueble1.jpg" alt="Mueble L 1">
+        <img src="muebles-l/mueble1.jpg" alt="Mueble L 1" loading="lazy">
         <h3>Mueble Esquinero Moderno</h3>
         <p>Diseño en forma de L. Elegante y cómodo. Precio $280,000</p>
         <button onclick="agregarAlCarrito('Mueble Esquinero Moderno', 280000)">Agregar 🛒</button>
@@ -933,14 +933,14 @@
        
       <!-- 🛋️ Mueble 2 -->
      <div class="producto">
-      <img src="muebles-l/mueble2.jpg" alt="Mueble L 2">
+      <img src="muebles-l/mueble2.jpg" alt="Mueble L 2" loading="lazy">
       <h3>Mueble en L de Lujo</h3>
       <p>Con tapizado premium y cojines incluidos. Precio $320,000</p>
       <button onclick="agregarAlCarrito('Mueble en L de Lujo', 320000)">Agregar 🛒</button>
      </div>       
       <!-- 🛋️ Mueble 3 -->
     <div class="producto">
-      <img src="muebles-l/mueble3.jpg" alt="Mueble L 3">
+      <img src="muebles-l/mueble3.jpg" alt="Mueble L 3" loading="lazy">
       <h3>Mueble L Clásico</h3>
       <p>Diseño clásico adaptable a cualquier sala. Precio $250,000</p>
       <button onclick="agregarAlCarrito('Mueble L Clásico', 250000)">Agregar 🛒</button>
@@ -969,41 +969,38 @@
     <ul id="lista-carrito"></ul>
     <p id="total">Total: $0</p>
     <button onclick="enviarPedido()">📲 Enviar pedido por WhatsApp</button>
-  </div>
+  <div>
 
-  <footer>
-    <p>📞 Contáctanos al <strong>53575726</strong></p>
-    <p>💬 <a href="https://www.facebook.com/groups/458479160148263/?ref=share&mibextid=NSMWBT" target="_blank">Únete a nuestro grupo en Facebook</a></p>
-    <p>&copy; 2025 Muebles M & M | Diseños Modernos</p>
-  </footer>
-
-  <a href="https://wa.me/53575726?text=Hola%20quiero%20información%20sobre%20los%20muebles%20M%20%26%20M"
-     class="whatsapp-float" target="_blank">💬</a>
-
+  <!-- 🧠 Script del carrito -->
   <script>
-  let carrito = [];
+   let carrito = [];
 
-  function agregarAlCarrito(nombre, selectId) {
+   // Agregar cama (con selección de tamaño)
+   function agregarCama(nombre, selectId) {
     const select = document.getElementById(selectId);
-    const opcion = select.options[select.selectedIndex];
-    const tipo = opcion.text.split(" - ")[0]; // Ej: "Queen"
+    const texto = select.options[select.selectedIndex].text;
     const precio = parseInt(select.value);
 
-    // Guardar el producto en el carrito
-    carrito.push({ nombre, tipo, precio });
+    carrito.push({ nombre: `${nombre} (${texto})`, precio });
     mostrarCarrito();
   }
 
+  // Agregar muebles (precio fijo)
+  function agregarAlCarrito(nombre, precio) {
+    carrito.push({ nombre, precio });
+    mostrarCarrito();
+  }
+
+  // Mostrar carrito
   function mostrarCarrito() {
     const lista = document.getElementById("lista-carrito");
     const total = document.getElementById("total");
-
     lista.innerHTML = "";
-    let suma = 0;
 
+    let suma = 0;
     carrito.forEach(item => {
       const li = document.createElement("li");
-      li.textContent = `${item.nombre} (${item.tipo}) - $${item.precio.toLocaleString()}`;
+      li.textContent = `${item.nombre} - $${item.precio.toLocaleString()}`;
       lista.appendChild(li);
       suma += item.precio;
     });
@@ -1011,26 +1008,24 @@
     total.textContent = `Total: $${suma.toLocaleString()}`;
   }
 
+  // Enviar pedido a WhatsApp
   function enviarPedido() {
+    const numero = "53575726"; // 👈 tu número de WhatsApp
     if (carrito.length === 0) {
-      alert("El carrito está vacío 😅");
+      alert("Tu carrito está vacío 🛒");
       return;
     }
 
-    let mensaje = "🛒 *Pedido de Muebles M&M:*\n";
-    carrito.forEach(item => {
-      mensaje += `• ${item.nombre} (${item.tipo}) - $${item.precio.toLocaleString()}\n`;
-    });
+    const mensaje = encodeURIComponent(
+      "🪑 *Pedido Muebles M&M* 🪑\n\n" +
+      carrito.map(item => `✅ ${item.nombre} - $${item.precio.toLocaleString()}`).join("\n") +
+      `\n\n💰 Total: $${carrito.reduce((s, i) => s + i.precio, 0).toLocaleString()}`
+    );
 
-    const total = carrito.reduce((sum, item) => sum + item.precio, 0);
-    mensaje += `\n💰 *Total:* $${total.toLocaleString()}`;
-
-    // número de WhatsApp (ajústalo si quieres)
-    const telefono = "53575726";
-    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
-    window.open(url, "_blank");
+    window.open(`https://wa.me/53${numero}?text=${mensaje}`, "_blank");
   }
 </script>
+    
 </body>
 </html>
 
