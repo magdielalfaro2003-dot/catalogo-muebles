@@ -970,71 +970,199 @@
     </div>
   </section>
 
-  <section id="carrito">
-    <h2>🛒 Carrito de compras</h2>
+  <!-- 🛒 SECCIÓN DEL CARRITO -->
+  <section id="carrito" class="seccion-carrito">
+    <h2>🛒 Carrito de Compras</h2>
     <ul id="lista-carrito"></ul>
     <p id="total">Total: $0</p>
-    <button onclick="alert('Gracias por su compra 🛍️')">Finalizar compra</button>
+
+   <div class="botones-carrito">
+    <button class="boton-carrito vaciar" onclick="vaciarCarrito()">🗑️ Vaciar carrito</button>
+    <button class="boton-carrito enviar" onclick="enviarWhatsApp()">✅ Enviar pedido por WhatsApp</button>
+   </div>
   </section>
 
-  <footer>
-    <p>📞 Contáctanos al <strong>53575726</strong></p>
-    <p>💬 <a href="https://www.facebook.com/groups/458479160148263/?ref=share&mibextid=NSMWBT" target="_blank">Únete a nuestro grupo en Facebook</a></p>
-    <p>&copy; 2025 Mueble M & M | Diseños Modernos</p>
-  </footer>
+  <style>
+  /* 🛒 Estilo general del carrito */
+  .seccion-carrito {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid gold;
+    border-radius: 20px;
+    padding: 25px;
+    margin: 40px auto;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    color: gold;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+    backdrop-filter: blur(8px);
+  }
 
-  <script>
-  let carrito = [];
+  .seccion-carrito h2 {
+    color: gold;
+    font-size: 1.8rem;
+    text-shadow: 0 0 10px gold;
+    margin-bottom: 15px;
+  }
+ 
+  #lista-carrito {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    text-align: left;
+    max-height: 250px;
+    overflow-y: auto;
+  }
+
+  #lista-carrito li {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid gold;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+  }
+
+  #lista-carrito li button {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+
+  #total {
+    margin: 15px 0;
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  /* 🟡 Botones del carrito */
+  .botones-carrito {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .boton-carrito {
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+  }
+
+  .boton-carrito.vaciar {
+    background-color: #222;
+    color: gold;
+    border: 1px solid gold;
+  }
+
+  .boton-carrito.vaciar:hover {
+    background-color: gold;
+    color: #000;
+  }
+
+  .boton-carrito.enviar {
+    background-color: gold;
+    color: #000;
+  }
+
+  .boton-carrito.enviar:hover {
+    background-color: #d4af37;
+    transform: scale(1.05);
+  }
+  </style>
+
+ <script>
+ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  function guardarCarrito() {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+  }
 
   function agregarAlCarrito(nombre, idSelect) {
     const select = document.getElementById(idSelect);
-    const precio = parseInt(select.value);
-    const texto = select.options[select.selectedIndex].text;
+    let precio = 0;
+    let tamano = "";
 
-    const producto = {
-      nombre: nombre,
-      descripcion: texto,
-      precio: precio
-    };
+    if (select) {
+      precio = parseFloat(select.value);
+      tamano = select.options[select.selectedIndex].text;
+    } else {
+      precio = parseFloat(idSelect);
+      tamano = "Único modelo";
+    }
 
-    carrito.push(producto);
-    mostrarCarrito();
+    carrito.push({ nombre, tamano, precio });
+    guardarCarrito();
+    actualizarCarrito();
   }
 
-  function mostrarCarrito() {
+  function actualizarCarrito() {
     const lista = document.getElementById("lista-carrito");
-    const totalElemento = document.getElementById("total");
+    const totalSpan = document.getElementById("total");
     lista.innerHTML = "";
     let total = 0;
 
-    carrito.forEach((p, index) => {
+    carrito.forEach((item, index) => {
       const li = document.createElement("li");
-      li.textContent = `${p.nombre} - ${p.descripcion} ($${p.precio.toLocaleString()})`;
-      
-      // Botón para eliminar
-      const botonEliminar = document.createElement("button");
-      botonEliminar.textContent = "❌";
-      botonEliminar.style.marginLeft = "10px";
-      botonEliminar.style.backgroundColor = "red";
-      botonEliminar.style.color = "white";
-      botonEliminar.style.border = "none";
-      botonEliminar.style.borderRadius = "5px";
-      botonEliminar.style.cursor = "pointer";
-      botonEliminar.onclick = () => eliminarDelCarrito(index);
-      
-      li.appendChild(botonEliminar);
-      lista.appendChild(li);
+      li.textContent = `${item.nombre} - ${item.tamano}`;
+      const precioSpan = document.createElement("span");
+      precioSpan.textContent = ` $${item.precio.toLocaleString()}`;
+      li.appendChild(precioSpan);
 
-      total += p.precio;
+      const btnEliminar = document.createElement("button");
+      btnEliminar.textContent = "❌";
+      btnEliminar.onclick = () => eliminarDelCarrito(index);
+      li.appendChild(btnEliminar);
+
+      lista.appendChild(li);
+      total += item.precio;
     });
 
-    totalElemento.textContent = `Total: $${total.toLocaleString()}`;
+    totalSpan.textContent = `Total: $${total.toLocaleString()}`;
   }
 
   function eliminarDelCarrito(index) {
     carrito.splice(index, 1);
-    mostrarCarrito();
+    guardarCarrito();
+    actualizarCarrito();
   }
+
+  function vaciarCarrito() {
+    carrito = [];
+    guardarCarrito();
+    actualizarCarrito();
+  }
+
+  function enviarWhatsApp() {
+    if (carrito.length === 0) {
+      alert("Tu carrito está vacío.");
+      return;
+    }
+
+    let mensaje = "🛋️ *Pedido desde el Catálogo Mueble M & M:*\n\n";
+    carrito.forEach(item => {
+      mensaje += `• ${item.nombre} - ${item.tamano} - $${item.precio.toLocaleString()}\n`;
+    });
+    const total = carrito.reduce((acc, item) => acc + item.precio, 0);
+    mensaje += `\n💰 *Total:* $${total.toLocaleString()}\n\n📞 Enviado desde el catálogo web.`;
+
+    const numeroWhatsApp = "53575726";
+    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, "_blank");
+  }
+
+  document.addEventListener("DOMContentLoaded", actualizarCarrito);
+
  </script>
 </body>
 </html>
