@@ -16,6 +16,37 @@
       background-position: center;
       background-attachment: fixed;
     }
+      .nombre-producto {
+      color: gold;
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+
+    .selector-precio {
+      width: 90%;
+      padding: 8px;
+      border-radius: 8px;
+      border: none;
+      background: #000;
+      color: gold;
+      font-weight: bold;
+    }
+
+    .boton-carrito {
+      background-color: gold;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      padding: 10px 16px;
+      margin-top: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .boton-carrito:hover {
+      background-color: #d4af37;
+    }
 
     /* --- Texto elegante negro con borde dorado --- */
     .producto h3 {
@@ -320,17 +351,18 @@
 
       <!-- Cama 1 -->
       <div class="producto">
-        <img src="camas/cama1.jpg" alt="Cama moderna 1" loading="lazy">
-        <h3>Cama Moderna 1</h3>
-        <p>Disponible en tamaño 3/4,Camera,Queen,King y de todos los colores.</p>
-        <select id="cama1-tamo">
-          <option value="155000">3/4(1.90cm x 1.20cm) - $155,000</option>
-          <option value="160000">Camera(1.90cm x 135cm)  - $160,000</option>
-          <option value="170000">Queen(1.90 o 2m x 1.60cm) - $170,000</option>
-          <option value="180000">King(2m x 2m) - $180,000</option>
+        <img src="camas/cama1.jpg" alt="Cama moderna 1" loading="lazy" class="imagen-producto">
+        <h3 class="nombre-producto">Cama Moderna 1</h3>
+        <p>Disponible en tamaño 3/4, Camera, Queen, King y en todos los colores.</p>
+        <label for="cama1-tamano">Tipo de cama:</label>
+        <select id="cama1-tamano" class="selector-precio">
+          <option value="155000">3/4 - $155,000</option>
+          <option value="160000">Camera - $160,000</option>
+          <option value="170000">Queen - $170,000</option>
+          <option value="180000">King - $180,000</option>
         </select>
-         <button onclick="agregarAlCarrito('Cama Moderna 1', 'cama1-tamano')">🛒 Agregar al carrito</button>
-      </div>
+          <button class="boton-carrito" onclick="agregarAlCarrito('Cama Moderna 1', 'cama1-tamano')">🛒 Agregar al carrito</button>
+       </div>
 
       <!-- Cama 2 -->
       <div class="producto">
