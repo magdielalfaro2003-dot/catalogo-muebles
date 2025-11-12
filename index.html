@@ -963,45 +963,56 @@
      class="whatsapp-float" target="_blank">💬</a>
 
   <script>
-    let carrito = [];
-    function agregarAlCarrito(nombre, selectId) {
-      const select = document.getElementById(selectId);
-      const opcionTexto = select.options[select.selectedIndex].text; // Ej: "Cama Queen - $170,000"
-      const precio = parseInt(select.value);
+  let carrito = [];
 
-      carrito.push({ nombre: `${nombre} (${opcionTexto})`, precio });
-      mostrarCarrito();
-        lista.innerHTML = "";
-        let suma = 0;
-      }
-     
-      carrito.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.nombre} - $${item.precio.toLocaleString()}`;
-        lista.appendChild(li);
-        suma += item.precio;
-      });
+  function agregarAlCarrito(nombre, selectId) {
+    const select = document.getElementById(selectId);
+    const opcion = select.options[select.selectedIndex];
+    const tipo = opcion.text.split(" - ")[0]; // Ej: "Queen"
+    const precio = parseInt(select.value);
 
-      total.textContent = `Total: $${suma.toLocaleString()}`;
+    // Guardar el producto en el carrito
+    carrito.push({ nombre, tipo, precio });
+    mostrarCarrito();
+  }
+
+  function mostrarCarrito() {
+    const lista = document.getElementById("lista-carrito");
+    const total = document.getElementById("total");
+
+    lista.innerHTML = "";
+    let suma = 0;
+
+    carrito.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.nombre} (${item.tipo}) - $${item.precio.toLocaleString()}`;
+      lista.appendChild(li);
+      suma += item.precio;
+    });
+
+    total.textContent = `Total: $${suma.toLocaleString()}`;
+  }
+
+  function enviarPedido() {
+    if (carrito.length === 0) {
+      alert("El carrito está vacío 😅");
+      return;
     }
 
-    function enviarWhatsApp() {
-      if (carrito.length === 0) {
-        alert("Tu carrito está vacío.");
-        return;
-      }
+    let mensaje = "🛒 *Pedido de Muebles M&M:*\n";
+    carrito.forEach(item => {
+      mensaje += `• ${item.nombre} (${item.tipo}) - $${item.precio.toLocaleString()}\n`;
+    });
 
-      let mensaje = "🛋️ *Pedido desde el catálogo Muebles M & M:*\n\n";
-      carrito.forEach(item => {
-        mensaje += `• ${item.nombre} - $${item.precio.toLocaleString()}\n`;
-      });
+    const total = carrito.reduce((sum, item) => sum + item.precio, 0);
+    mensaje += `\n💰 *Total:* $${total.toLocaleString()}`;
 
-      const total = carrito.reduce((a, i) => a + i.precio, 0);
-      mensaje += `\n💰 Total: $${total.toLocaleString()}`;
-      const url = `https://wa.me/53575726?text=${encodeURIComponent(mensaje)}`;
-      window.open(url, "_blank");
-      }
-  </script>
+    // número de WhatsApp (ajústalo si quieres)
+    const telefono = "53575726";
+    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, "_blank");
+  }
+</script>
 </body>
 </html>
 
