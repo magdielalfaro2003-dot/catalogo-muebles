@@ -69,35 +69,37 @@
       transform: scale(1.05);
       color: #111;
     }
-
-
+      
     header {
-      width: 100%;
-      background: linear-gradient(90deg, #000000, #1a1a1a); /* fondo oscuro elegante */
-      color: white;
-      text-align: center;
-      padding: 20px 0;
-      position: relative;
-      top: 0;
-      left: 0;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
-      border-bottom: 2px solid gold;
-      z-index: 1000; /* para que siempre quede arriba */
-      }
+     width: 100%;
+     text-align: center;
+     padding: 20px 10px;
+     background: rgba(0, 0, 0, 0.85);
+     border-bottom: 2px solid gold;
+     color: white;
+    }
 
-      header svg {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      }
+    header svg {
+     width: 100%;
+     max-width: 400px; /* 📱 no se deforma, se ajusta */
+     height: auto;
+    }
 
-      header p {
-      color: gold;
-      font-size: 1.1rem;
-      font-weight: 500;
-      margin-top: 10px;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    header p {
+     font-size: 1rem;
+     color: gold;
+     margin-top: 8px;
+   }
+
+    /* 🔁 Adaptación para pantallas pequeñas */
+    @media (max-width: 600px) {
+    header svg text {
+     font-size: 28px; /* más pequeño para celulares */
       }
+    header p {
+     font-size: 0.9rem;
+      }
+    }
 
     nav {
       background-color: #333;
