@@ -1326,20 +1326,6 @@
     contenedor.style.maxHeight = "70px";
   }
 }
-
-  // 🔄 Actualiza el contador de productos
-  function actualizarContador() {
-    const contador = document.getElementById("contador-items");
-    contador.textContent = `(${carrito.length})`;
-  }
-
-  // Llamar a actualizarContador cada vez que se cambie el carrito
-  const originalAgregar = agregarAlCarrito;
-  agregarAlCarrito = function(...args) {
-    originalAgregar(...args);
-    actualizarContador();
-};
-
  </script>
 </body>
 </html>
