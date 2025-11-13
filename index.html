@@ -1107,12 +1107,14 @@
   /* 🛒 Estilo general del carrito */
   #carrito-contenedor {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  bottom: 20px; /* 🔽 aquí decides qué tan separado del borde está */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
   background: rgba(0, 0, 0, 0.95);
-  border-top: 3px solid gold;
-  box-shadow: 0 -4px 20px rgba(255, 215, 0, 0.4);
+  border: 2px solid gold;
+  border-radius: 15px;
+  box-shadow: 0 -4px 25px rgba(255, 215, 0, 0.5);
   font-family: "Poppins", sans-serif;
   z-index: 1000;
   color: gold;
