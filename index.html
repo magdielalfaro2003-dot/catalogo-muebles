@@ -354,98 +354,120 @@
 
      /* 📸 Galería de productos */
       .galeria {
-       display: grid;
-       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-       gap: 25px;
-       justify-content: center;
-       padding: 30px;
-       background: #111;
-     }
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Se adapta automáticamente */
+        gap: 25px;
+        justify-content: center;
+        padding: 20px;
+      }
 
-      /* 🪑 Tarjeta individual */
+      /* 🪑 Tarjeta de cada producto */
       .producto {
-       background: rgba(0, 0, 0, 0.85);
-       border: 1px solid gold;
-       border-radius: 20px;
-       padding: 20px;
-       box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
-       transition: 0.3s;
-       text-align: center;
-     }
+        background: rgba(0, 0, 0, 0.85);
+        border: 1px solid gold;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        text-align: center;
+        transition: 0.3s;
+      }
 
-     .producto:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
-     }
+      .producto:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+      }
 
-     /* 📷 Imagen */
-     .producto img {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-      border-radius: 15px;
-      border: 1px solid gold;
-     }
+      /* 📸 Imagen del producto */
+      .producto img {
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        border-radius: 15px;
+        border: 1px solid gold;
+      }
 
-     /* 🪄 Nombre del producto */
-     .producto h3 {
-      color: gold;
-      font-size: 1.3rem;
-      margin: 10px 0;
-      text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
-     }
+      /* 🪄 Nombre del producto */
+      .producto h3 {
+        color: gold;
+        font-size: 1.3rem;
+        margin: 10px 0;
+        text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+      }
 
-     /* 📜 Descripción */
-     .producto p {
-      color: #fff;
-      font-size: 0.95rem;
-      margin-bottom: 12px;
-     }
+      /* 📜 Descripción */
+      .producto p {
+        color: #fff;
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+      }
 
-     /* 🧾 Selector de tamaño/precio */
-     .selector-precio {
-      width: 100%;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid gold;
-      background: #000;
-      color: gold;
-      font-weight: bold;
-      margin-bottom: 10px;
-      cursor: pointer;
-     }
+      /* 🧾 Selector de tamaño/precio */
+      .selector-precio {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid gold;
+        background: #000;
+        color: gold;
+        font-weight: bold;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
 
-     /* 🛒 Botón agregar al carrito */
-     .boton-carrito {
-      background-color: gold;
-      color: #000;
-      font-weight: bold;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-      width: 100%;
-     }
+      /* 🛒 Botón agregar al carrito */
+      .boton-carrito {
+        background-color: gold;
+        color: #000;
+        font-weight: bold;
+        border: none;
+        padding: 10px 16px;
+       border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+        width: 100%;
+      }
 
-     .boton-carrito:hover {
-      background-color: #d4af37;
-      transform: scale(1.05);
-     }
+      .boton-carrito:hover {
+        background-color: #d4af37;
+        transform: scale(1.05);
+      }
 
-     /* ✨ Scroll bonito */
-     ::-webkit-scrollbar {
-      width: 8px;
-     }
+      /* ✨ Scroll bonito */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: gold;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000;
+      }
 
-     ::-webkit-scrollbar-thumb {
-      background: gold;
-      border-radius: 4px;
-     }
+      /* 📱 RESPONSIVE: Ajustes para teléfonos */
+      @media (max-width: 768px) {
+        .galeria {
+          grid-template-columns: repeat(2, 1fr); /* 2 productos por fila en tablets */
+        }
+      }
 
-     ::-webkit-scrollbar-track {
-      background: #000;
-     }      
+      @media (max-width: 480px) {
+        .galeria {
+          grid-template-columns: 1fr; /* 1 producto por fila en celulares */
+        }
+
+        .producto img {
+          height: 200px; /* imágenes más pequeñas para móvil */
+        }
+
+        .producto h3 {
+          font-size: 1.1rem;
+        }
+
+        .producto p {
+          font-size: 0.85rem;
+         }
+  }
   </style>
 </head>
 <body>
@@ -1039,19 +1061,19 @@
  </section>
 
   <!-- 🛋️ Muebles en L -->
-  <section id="muebles-l" class="seccion-productos">
+ <section id="muebles-l" class="seccion-productos">
      <h2 style="grid-column: 1 / -1; text-align:center; color:gold; font-size:2rem; text-shadow:0 0 10px gold; margin:40px 0 20px;">
     🛋️ Muebles en L
   </h2>
 
-    <!-- 🛋️ Mueble 1 -->
-    <div class="producto">
-     <img src="muebles-l/mueble1.jpg" alt="Mueble L1" loading="lazy">
-     <h3>Mueble en L de Lujo</h3>
-     <p>Diseño en forma de L. Elegante y cómodo.</p>
-     <p class="precio">💰 $195,000</p>
-     <button onclick="agregarAlCarrito('Mueble en L de lujo 1', 195000)">Agregar 🛒</button>
-    </div>
+      <!-- 🛋️ Mueble 1 -->
+      <div class="producto">
+       <img src="muebles-l/mueble1.jpg" alt="Mueble L1" loading="lazy">
+       <h3>Mueble en L de Lujo</h3>
+       <p>Diseño en forma de L. Elegante y cómodo.</p>
+       <p class="precio">💰 $195,000</p>
+       <button onclick="agregarAlCarrito('Mueble en L de lujo 1', 195000)">Agregar 🛒</button>
+      </div>
 
     <!-- 🛋️ Mueble 2 -->
     <div class="producto">
