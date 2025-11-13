@@ -86,6 +86,7 @@
 
     header p {
      font-size: 1rem;
+     width: 100%;
      color: gold;
      text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
      margin-top: 8px;
@@ -102,7 +103,7 @@
     }
 
     nav {
-      background: linear-gradient(50deg, #D4AF37 100%);
+      background-color: #cccccc; 
       position: fixed;
       top: 0;
       left: 0;
@@ -124,12 +125,22 @@
     }
 
     nav a:hover {
-      background-color: #D4AF37;  
-      color: #111111;             
+      background-color: #D4AF37; /* dorado */
+      color: #111111;            /* texto oscuro */
+    }            
+    .separator {
+      background-color: #D4AF37;
+      height: 2px; /* grosor de la franja */
+      position: fixed;
+      top: 60px; /* justo debajo del nav */
+      left: 0;
+      width: 100%;
+      z-index: 999;
     }
+
     h1 {
-      margin-top: 40px; /* separación extra entre nav y encabezado */
-    } 
+      margin-top: 40px; /* separación extra */
+    }
       
 
     .seccion-productos {
