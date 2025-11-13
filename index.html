@@ -1105,45 +1105,44 @@
 
   <style>
   /* 🛒 Estilo general del carrito */
-  #carrito-contenedor {
+  /* 🛒 Carrito fijo inferior */
+#carrito-contenedor {
   position: fixed;
-  bottom: 0px; /* 🔽 aquí decides qué tan separado del borde está */
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  height: 130px;
-  min-height: 80px; 
-  height: auto;   
-  background: rgba(0, 0, 0, 0.80);
+  background: rgba(0, 0, 0, 0.9);
   border: 2px solid gold;
-  border-radius: 15px;
-  box-shadow: 0 -4px 25px rgba(255, 215, 0, 0.5);
+  border-radius: 15px 15px 0 0;
+  box-shadow: 0 -4px 25px rgba(255, 215, 0, 0.4);
   font-family: "Poppins", sans-serif;
   z-index: 1000;
   color: gold;
-  padding: 10px;  
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  max-height: 70px; /* cerrado por defecto */
 }
 
-/* 🧱 Encabezado del carrito */
+/* 🧱 Encabezado (barra visible siempre) */
 #carrito-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 20px;
-  cursor: pointer;
   font-weight: bold;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.95);
   color: gold;
   font-size: 1.2rem;
-  border-top: 1px solid gold;
+  cursor: pointer;
+  border-bottom: 1px solid gold;
 }
-
 /* 🔽 Área interna del carrito */
 #carrito {
+  padding: 15px 20px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease-in-out;
-  padding: 0 20px;
+  transition: max-height 0.4s ease;
 }
 
 #carrito.abierto {
@@ -1157,7 +1156,7 @@
   padding: 0;
   margin: 10px 0;
   text-align: left;
-  max-height: 200px;
+  max-height: 1500px;
   overflow-y: auto;
 }
 
@@ -1311,9 +1310,10 @@
   }
 
   document.addEventListener("DOMContentLoaded", actualizarCarrito);
-   function toggleCarrito() {
-  const carrito = document.getElementById("carrito");
-  const icon = document.getElementById("toggle-icon");
+   
+  function toggleCarrito() {
+   const carrito = document.getElementById("carrito");
+   const icon = document.getElementById("toggle-icon");
 
   carrito.classList.toggle("abierto");
 
@@ -1322,7 +1322,25 @@
   } else {
     icon.textContent = "🔽";
   }
+  contenedor.style.maxHeight = "500px";
+  } else {
+    contenedor.style.maxHeight = "70px";
+  }
 }
+
+  // 🔄 Actualiza el contador de productos
+  function actualizarContador() {
+    const contador = document.getElementById("contador-items");
+    contador.textContent = `(${carrito.length})`;
+  }
+
+  // Llamar a actualizarContador cada vez que se cambie el carrito
+  const originalAgregar = agregarAlCarrito;
+  agregarAlCarrito = function(...args) {
+    originalAgregar(...args);
+    actualizarContador();
+};
+
  </script>
 </body>
 </html>
