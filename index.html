@@ -1328,17 +1328,20 @@
   document.addEventListener("DOMContentLoaded", actualizarCarrito);
    
   function toggleCarrito() {
-  const carrito = document.getElementById("carrito");
-  const icon = document.getElementById("toggle-icon");
+   const carrito = document.getElementById("carrito");
+   const contenedor = document.getElementById("carrito-contenedor");
+   const icon = document.getElementById("toggle-icon");
 
   carrito.classList.toggle("abierto");
 
   if (carrito.classList.contains("abierto")) {
-    icon.textContent = "🔼";
+    contenedor.style.maxHeight = "500px";
+    icon.textContent = "🔽"; // icono hacia abajo
   } else {
-    icon.textContent = "🔽";
+    contenedor.style.maxHeight = "70px";
+    icon.textContent = "🔼"; // icono hacia arriba
   }
-}
+ }
  </script>
 </body>
 </html>
