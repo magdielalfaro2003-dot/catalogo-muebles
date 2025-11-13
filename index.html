@@ -1043,9 +1043,9 @@
       <!-- 🛋️ Mueble 1 -->
     <div class="producto">
       <img src="muebles-l/mueble1.jpg" alt="Mueble L1" loading="lazy">
-      <h3>Mueble Esquinero Moderno</h3>
+      <h3>Mueble en L de Lujo </h3>
       <p>Diseño en forma de L. Elegante y cómodo. Precio: <strong>$195,000</strong></p>
-      <button onclick="agregarAlCarrito('Mueble Esquinero Moderno', 195000)">Agregar 🛒</button>
+      <button onclick="agregarAlCarrito('Mueble en L de lujo 1', 195000)">Agregar 🛒</button>
     </div>
        
       <!-- 🛋️ Mueble 2 -->
@@ -1053,22 +1053,36 @@
       <img src="muebles-l/mueble2.jpg" alt="Mueble L2" loading="lazy">
       <h3>Mueble en L de Lujo Capitoneado</h3>
       <p>Con tapizado premium y cojines incluidos. Precio: <strong>$240,000</strong></p>
-      <button onclick="agregarAlCarrito('Mueble en L de Lujo', 320000)">Agregar 🛒</button>
+      <button onclick="agregarAlCarrito('Mueble en L de Lujo capitoneado 2', 320000)">Agregar 🛒</button>
     </div>       
       <!-- 🛋️ Mueble 3 -->
     <div class="producto">
       <img src="muebles-l/mueble3.jpg" alt="Mueble L3" loading="lazy">
       <h3>Mueble en L de Lujo</h3>
       <p>Diseño clásico adaptable a cualquier sala. Precio: <strong>$160,000<strong></p>
-      <button onclick="agregarAlCarrito('Mueble L Clásico', 250000)">Agregar 🛒</button>
+      <button onclick="agregarAlCarrito('Mueble en L lujo 3', 250000)">Agregar 🛒</button>
     </div>
       <!-- 🛋️ Mueble 4 -->
     <div class="producto">
       <img src="muebles-l/mueble4.jpg" alt="Mueble L4" loading="lazy">
       <h3>Mueble en L de Lujo</h3>
       <p>Diseño clásico adaptable a cualquier sala. Precio: <strong>$160,000<strong></p>
-      <button onclick="agregarAlCarrito('Mueble L Clásico', 250000)">Agregar 🛒</button>
+      <button onclick="agregarAlCarrito('Mueble en L de Lujo 4', 250000)">Agregar 🛒</button>
     </div> 
+        <!-- 🛋️ Mueble 5 -->
+    <div class="producto">
+      <img src="muebles-l/mueble5.jpg" alt="Mueble L5" loading="lazy">
+      <h3>Mueble en L de Lujo</h3>
+      <p>Diseño clásico adaptable a cualquier sala. Precio: <strong>$160,000<strong></p>
+      <button onclick="agregarAlCarrito('Mueble L en L de lujo 5', 250000)">Agregar 🛒</button>
+    </div> 
+        <!-- 🛋️ Mueble 6 -->
+    <div class="producto">
+      <img src="muebles-l/mueble6.jpg" alt="Mueble L6" loading="lazy">
+      <h3>Mueble en L de Lujo</h3>
+      <p>Diseño clásico adaptable a cualquier sala. Precio: <strong>$160,000<strong></p>
+      <button onclick="agregarAlCarrito('Mueble en L de lujo 6 ', 250000)">Agregar 🛒</button>
+    </div>
         
     </div>
     </div>
@@ -1104,20 +1118,22 @@
   </section>
 
   <style>
-  /* 🛒 Estilo general del carrito */
-  #carrito-contenedor {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.95);
-  border-top: 3px solid gold;
-  box-shadow: 0 -4px 20px rgba(255, 215, 0, 0.4);
-  font-family: "Poppins", sans-serif;
-  z-index: 1000;
-  color: gold;  
-  height: 150px
-}
+    /* 🛒 Estilo general del carrito */
+    #carrito-contenedor {
+     position: fixed;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     background: rgba(0, 0, 0, 0.95);
+     border-top: 3px solid gold;
+     box-shadow: 0 -4px 20px rgba(255, 215, 0, 0.4);
+     font-family: "Poppins", sans-serif;
+     z-index: 1000;
+     color: gold;
+     max-height: 70px; /* Altura inicial (más baja) */
+     overflow: hidden;
+     transition: max-height 0.5s ease;
+  }
 
   /* 🧱 Encabezado del carrito */
   #carrito-header {
@@ -1127,25 +1143,31 @@
     padding: 12px 20px;
     cursor: pointer;
     font-weight: bold;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     color: gold;
     font-size: 1.2rem;
-    border-top: 1px solid gold;
+    border-bottom: 1px solid gold;
   }
 
-  /* 🔽 Área interna del carrito */
+  #carrito-header:hover {
+    background-color: gold;
+    color: #000;
+  }
+
+  /* 🔽 Contenido interno del carrito */
   #carrito {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-in-out;
+    transition: max-height 0.4s ease-in-out;
     padding: 0 20px;
   }
 
   #carrito.abierto {
-    max-height: 400px; /* puedes aumentar si quieres más espacio */
+    max-height: 400px; /* Altura total visible al abrir */
     padding: 15px 20px;
   }
 
+  /* 🧾 Lista */
   #lista-carrito {
     list-style: none;
     padding: 0;
@@ -1220,7 +1242,7 @@
   .boton-carrito.enviar:hover {
     background-color: #d4af37;
     transform: scale(1.05);
-}
+  }
   </style>
 
  <script>
