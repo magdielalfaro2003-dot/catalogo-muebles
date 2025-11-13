@@ -9,7 +9,8 @@
       margin: 0;
       font-family: "Poppins", sans-serif;
       color: #fff;
-      background: linear-gradient(to bottom, #000000 0%, #1a0f00 50%, #b8860b 100%);    
+      background: 
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),    
         url('fondo1.png');
       background-size: cover;
       background-position: center;
@@ -70,23 +71,23 @@
     }
       
     header {
-     width: 100%;
      text-align: center;
-     padding: 20px 10px;
-     background: rgba(0, 0, 0, 0.85);
+     padding: 25px 10px;
+     background: linear-gradient(to right, #000, #1a0f00, #000);
      border-bottom: 2px solid gold;
      color: white;
     }
 
     header svg {
      width: 100%;
-     max-width: 400px; /* 📱 no se deforma, se ajusta */
+     max-width: 350px; /* 📱 no se deforma, se ajusta */
      height: auto;
     }
 
     header p {
      font-size: 1rem;
      color: gold;
+     text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
      margin-top: 8px;
    }
 
@@ -130,25 +131,21 @@
     }
 
     .galeria {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       justify-content: center;
       gap: 20px;
     }
 
     .producto {
-      background-color: rgba(255, 255, 255, 0.6); /* fondo blanco con transparencia suave */
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      width: 300px; /* puedes ajustarlo a 300 si quieres más grande */
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
+      background-color: rgba(0, 0, 0, 75); /* fondo blanco con transparencia suave */
+      border: 1px solid gold;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
       min-height: 420px; /* asegura que todos los cuadros tengan la misma altura */
       overflow: hidden; /* evita que algo se salga del cuadro */
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: 0.3s ease
     }
 
     .producto img {
@@ -474,7 +471,7 @@
 <body>
 
   <header>
-    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="60" viewBox="0 0 400 100">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
       <text x="10" y="65" font-family="Arial" font-size="42" font-weight="bold" fill="#d4af37">Mueble</text>
       <text x="170" y="65" font-family="Arial" font-size="42" font-weight="bold" fill="#ffffff">M & M</text>
     </svg>
