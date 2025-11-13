@@ -467,7 +467,9 @@
 
   <!-- 🛏️ Sección de Camas -->
   <section id="camas" class="seccion-productos">
-    <h2>Camas Modernas</h2>
+    <h2 style="grid-column: 1 / -1; text-align:center; color:gold; font-size:2rem; text-shadow:0 0 10px gold; margin-bottom:20px;">
+    🛏️ Camas moderna
+  </h2>
     <div class="galeria">
 
       <!-- Cama 1 -->
@@ -1038,7 +1040,9 @@
 
      <!-- 🛋️ Muebles en L -->
      <section id="muebles-l" class="seccion-productos">
-     <h2>Muebles en L</h2>
+     <h2 style="grid-column: 1 / -1; text-align:center; color:gold; font-size:2rem; text-shadow:0 0 10px gold; margin:40px 0 20px;">
+    🛋️ Muebles en L
+  </h2>
      <div class="galeria">
 
       <section id="galeria-muebles">
@@ -1097,18 +1101,44 @@
   </div>
  </section>
 
-  <!-- 🪑 Capitoneados -->
-  <section id="muebles-capitoneados" class="seccion-productos">
-    <h2>Muebles Capitoneados</h2>
-    <div class="galeria">
-      <div class="producto">
-        <img src="muebles-capitoneados/sala1.jpg" alt="Mueble capitoneado">
-        <h3>Mueble Capitoneado Moderno</h3>
-        <p>Elegancia y confort. Precio: <strong>$350,000</strong></p>
-       <button onclick="agregarAlCarrito('Mueble Capitoneado Moderno', 350000)">Agregar 🛒</button>
-      </div>
+  <!-- 💎 TÍTULO DE SECCIÓN CAPITONEADOS -->
+  <h2 style="grid-column: 1 / -1; text-align:center; color:gold; font-size:2rem; text-shadow:0 0 10px gold; margin:40px 0 20px;">
+    💎 Muebles Capitoneados
+  </h2>
+
+  <!-- 🪶 Capitoneado 1 -->
+  <div class="producto">
+    <img src="muebles-capitoneados/capi1.jpg" alt="Capitoneado 1" loading="lazy">
+    <h3>Mueble Capitoneado Clásico</h3>
+    <p>Diseño tradicional con detalles artesanales.</p>
+    <button class="boton-carrito" onclick="agregarAlCarrito('Mueble capitoneado clásico 1', 270000)">Agregar 🛒</button>
+  </div>
+
+  <!-- 🪶 Capitoneado 2 -->
+  <div class="producto">
+    <img src="muebles-capitoneados/capi2.jpg" alt="Capitoneado 2" loading="lazy">
+    <h3>Mueble Capitoneado Real</h3>
+    <p>Estilo elegante con tapizado premium.</p>
+    <button class="boton-carrito" onclick="agregarAlCarrito('Mueble capitoneado real 2', 295000)">Agregar 🛒</button>
+  </div>
+
+  <!-- 🪶 Capitoneado 3 -->
+  <div class="producto">
+    <img src="muebles-capitoneados/capi3.jpg" alt="Capitoneado 3" loading="lazy">
+    <h3>Mueble Capitoneado Moderno</h3>
+    <p>Perfecto para ambientes sofisticados.</p>
+    <button class="boton-carrito" onclick="agregarAlCarrito('Mueble capitoneado moderno 3', 310000)">Agregar 🛒</button>
+  </div>
+
+  <!-- 🪶 Capitoneado 4 -->
+  <div class="producto">
+    <img src="muebles-capitoneados/capi4.jpg" alt="Capitoneado 4" loading="lazy">
+    <h3>Mueble Capitoneado en L</h3>
+    <p>Confort y diseño elegante en un solo mueble.</p>
+    <button class="boton-carrito" onclick="agregarAlCarrito('Mueble capitoneado en L 4', 330000)">Agregar 🛒</button>
     </div>
-  </section>
+    </div>
+ </section>
 
   <!-- 🛒 SECCIÓN DEL CARRITO -->
   <div id="carrito-contenedor">
@@ -1123,7 +1153,7 @@
     <div class="botones-carrito">
       <button class="boton-carrito vaciar" onclick="vaciarCarrito()">🗑️ Vaciar</button>
       <button class="boton-carrito enviar" onclick="enviarWhatsApp()">📲 Enviar por WhatsApp</button>
-    </div>
+   </div>
   </section>
 
   <style>
