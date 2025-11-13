@@ -1107,7 +1107,7 @@
   /* 🛒 Estilo general del carrito */
   #carrito-contenedor {
     position: fixed;
-    bottom: 10;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
@@ -1120,7 +1120,9 @@
     color: gold;
     overflow: hidden;
     transition: max-height 0.5s ease;
-    max-height: 70px; /* cerrado por defecto */
+    max-height: 200px; 
+    min-height: 70px; /* altura base */
+    height: auto;
   }
 
   /* 🧱 Encabezado (barra visible siempre) */
