@@ -101,33 +101,50 @@
      font-size: 0.9rem; 
       }
     }
-
+    /* 🔥 NAV estilo lujo negro + dorado */
     nav {
-      background-color: #000000;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
+      background: linear-gradient(to right, #000000, #1a1a1a, #000000); /* Degradado suave negro */
+      padding: 12px 0;
       display: flex;
       justify-content: center;
-      gap: 14px;
-      padding: 8px 0;
-      z-index: 1000;
-    }
+      gap: 25px;       /* Separación entre botones */
+      z-index: 2000;
+      border-bottom: 2px solid rgba(212, 175, 55, 0.7); /* Línea dorada */
+      backdrop-filter: blur(8px);  /* Efecto vidrio elegante */
+     } 
 
+    /* ✨ Botones del menú */
     nav a {
-      color: #FFFFFF;             /* letras blancas */
+      color: gold;
       text-decoration: none;
       font-weight: bold;
-      padding: 8px 12px;
-      transition: color 0.2s ease, background-color 0.2s ease;
+      font-size: 1.05rem;
+      padding: 8px 14px;
       border-radius: 6px;
-    }
+      transition: 0.3s;
+     }
 
+    /* ⭐ Hover dorado */
     nav a:hover {
-      background-color: #D4AF37; /* dorado */
-      color: #111111;            /* texto oscuro */
-    }             
+      background: linear-gradient(to right, #d4af37, #b8921b);
+      color: #000;
+      transform: scale(1.08);
+     }   
+    @media (max-width: 480px) {
+      nav {
+        gap: 12px;       /* Menos separación */
+        padding: 10px 0;
+     }
+
+      nav a {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+     }
+    }
 
     .seccion-productos {
       padding: 30px 15px;
