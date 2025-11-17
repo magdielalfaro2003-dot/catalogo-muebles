@@ -509,7 +509,7 @@
 
         .producto p {
           font-size: 0.85rem;
-         }
+        }
         
       .titulo-oro {
         grid-column: 1 / -1;
@@ -540,6 +540,33 @@
         100% { background-position: 300% }
       }
 
+      .producto {
+        position: relative;
+      }
+
+      /* 🔥 Franja diagonal de AGOTADO */
+      .producto.agotado::after {
+        content: "AGOTADO";
+        position: absolute;
+        top: 20px;
+        left: -40px;
+        width: 180%;
+        background: rgba(255, 0, 0, 0.85); /* rojo */
+        color: white;
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: bold;
+        padding: 10px 0;
+        transform: rotate(-15deg);   /* inclinación */
+        letter-spacing: 3px;
+        box-shadow: 0 0 15px red;
+        text-shadow: 0 0 6px black;
+        z-index: 10;
+        border: 2px solid #900;
+      }  
+      .producto.agotado img {
+        filter: grayscale(100%) brightness(40%);
+      }  
   }
   </style>
 </head>
@@ -570,7 +597,7 @@
     <div class="galeria"> 
 
       <!-- Cama 1 -->
-      <div class="producto">
+      <div class="producto agotado">
         <img src="camas/cama1.jpg" alt="Cama moderna 1">
         <h3>Cama Moderna 1</h3>
         <p>Disponible en tamaño 3/4, Camera, Queen, King y de todos los colores.</p>
