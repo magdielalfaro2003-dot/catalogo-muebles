@@ -542,31 +542,31 @@
 
       .producto {
         position: relative;
+        width: 300px;
       }
 
-      /* 🔥 Franja diagonal de AGOTADO */
+      .producto img {
+        width: 100%;
+        display: block;
+      }
+
+      /* FRANJA diagonal */
       .producto.agotado::after {
         content: "AGOTADO";
         position: absolute;
         top: 20px;
         left: -40px;
         width: 180%;
-        background: rgba(255, 0, 0, 0.85); /* rojo */
+        background: rgba(255, 0, 0, 0.85);
         color: white;
         text-align: center;
         font-size: 1.4rem;
         font-weight: bold;
         padding: 10px 0;
-        transform: rotate(-15deg);   /* inclinación */
+        transform: rotate(-15deg);
         letter-spacing: 3px;
-        box-shadow: 0 0 15px red;
-        text-shadow: 0 0 6px black;
         z-index: 10;
-        border: 2px solid #900;
-      }  
-      .producto.agotado img {
-        filter: grayscale(100%) brightness(40%);
-      }  
+      } 
   }
   </style>
 </head>
