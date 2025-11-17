@@ -540,33 +540,38 @@
         100% { background-position: 300% }
       }
 
-      .producto {
-        position: relative;
-        width: 300px;
-      }
+    /* 🟥 FRANJA AGOTADO EN DIAGONAL OBLICUA */
+    .producto {
+      position: relative;
+    }
 
-      .producto img {
-        width: 100%;
-        display: block;
-      }
+    .producto.agotado::after {
+      content: "AGOTADO";
+      position: absolute;
 
-      /* FRANJA diagonal */
-      .producto.agotado::after {
-        content: "AGOTADO";
-        position: absolute;
-        top: 20px;
-        left: -40px;
-        width: 180%;
-        background: rgba(255, 0, 0, 0.85);
-        color: white;
-        text-align: center;
-        font-size: 1.4rem;
-        font-weight: bold;
-        padding: 10px 0;
-        transform: rotate(-15deg);
-        letter-spacing: 3px;
-        z-index: 10;
-      } 
+      /* Cruza toda la tarjeta en diagonal */
+      top: 50%;
+      left: 50%;
+      width: 180%;
+      height: 45px;
+
+      background: rgba(255, 0, 0, 0.85);
+      color: white;
+      font-size: 1.6rem;
+      font-weight: bold;
+      text-align: center;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      /* Inclinación invertida: sube de izquierda abajo a derecha arriba */
+      transform: translate(-50%, -50%) rotate(45deg);
+
+      letter-spacing: 4px;
+      z-index: 20;
+      pointer-events: none; /* no afecta clics */
+    }
   }
   </style>
 </head>
