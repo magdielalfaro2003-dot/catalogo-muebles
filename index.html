@@ -602,6 +602,14 @@
     <li><a href="#muebles-capitoneados">💎 Muebles Capitoneados</a><li> 
     <li> <a href="#electrodomesticos/">Electrodomésticos</a><li> 
   </nav>
+  <div style="text-align: right; padding: 10px;">
+    <label for="moneda">Moneda:</label>
+    <select id="moneda" onchange="cambiarMoneda()">
+      <option value="usd">USD</option>
+      <option value="cup">CUP</option>
+    </select>
+  </div>
+  
   <div class="separator"></div>
 
   <!-- 🛏️ Sección de Camas -->
@@ -2044,6 +2052,34 @@
   }
  }
  </script>
+    
+ <script>
+  const tasa = 435; // 1 USD = 435 CUP
+
+  function cambiarMoneda() {
+    const moneda = document.getElementById("moneda").value;
+    const precios = document.querySelectorAll(".precio");
+
+    precios.forEach(precio => {
+      // precio.dataset.usd debe tener el precio en USD original
+      const usd = Number(precio.dataset.usd);
+
+      if (moneda === "usd") {
+        precio.textContent = `💰 ${usd.toFixed(2)} USD`;
+      } else {
+        const cup = usd * tasa;
+        precio.textContent = `💰 ${cup.toLocaleString()} CUP`;
+      }
+    });
+  }
+
+  // Opcional: al cargar la página, puedes hacer que muestre la moneda por defecto
+  window.onload = function() {
+    cambiarMoneda();
+  }
+</script>
+    
+    
 </body>
 </html>
 
