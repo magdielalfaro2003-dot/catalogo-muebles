@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Muebles M & M - Catálogo Moderno</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
     <style>
     body {
       margin: 0;
@@ -16,6 +18,7 @@
       background-position: center;
       background-attachment: fixed;
     }
+
       .nombre-producto {
       color: gold;
       font-size: 1.2rem;
@@ -573,6 +576,13 @@
       z-index: 20;
       pointer-events: none; /* no afecta clics */
     }
+      /* Precio USD bonito */
+    .precio-usd {
+      color: #0a7d34;        /* Verde elegante */
+      font-weight: bold;
+      margin-top: -8px;
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -587,10 +597,10 @@
   </header>
 
   <nav>
-    <a href="#camas">🛏️ Camas</a>
-    <a href="#muebles-l">🛋️ Muebles-L</a>
-    <a href="#muebles-capitoneados">💎 Muebles Capitoneados</a> 
-    <a href="electrodomesticos.html">⚡ Electrodomésticos</a>
+    <li><a href="#camas">🛏️ Camas</a><li>
+    <li><a href="#muebles-l">🛋️ Muebles-L</a><li>
+    <li><a href="#muebles-capitoneados">💎 Muebles Capitoneados</a><li> 
+    <li><a href="electrodomesticos.html">⚡ Electrodomésticos</a></li>
   </nav>
   <div class="separator"></div>
 
@@ -1726,6 +1736,65 @@
        </div>
    </div>
  </section>
+    <h1 style="text-align:center; margin-top:20px;">⚡ Electrodomésticos</h1>
+
+    <div class="contenedor">
+
+      <!-- AIR FRYER -->
+      <div class="producto">
+        <img src="img/airfryer.jpg" alt="Air Fryer Royal 4L">
+        <h2>Air Fryer Royal 4L</h2>
+        <p class="precio-usd">💵 USD $65.00</p>
+       </div>
+
+      <!-- TV ROYAL 32 SMART -->
+      <div class="producto">
+        <img src="img/tv32.jpg" alt="Televisor Royal 32 Smart TV">
+        <h2>Televisor ROYAL 32” Smart</h2>
+        <p class="precio-usd">💵 USD $150.00</p>
+       </div>
+
+      <!-- COCINA DE KEROSENO -->
+      <div class="producto">
+        <img src="img/cocina.jpg" alt="Cocina de Keroseno BigWheel">
+        <h2>Cocina de Keroseno BigWheel</h2>
+        <p class="precio-usd">💵 USD $36.00</p>
+       </div>
+
+      <!-- BOMBA DE AGUA -->
+      <div class="producto">
+        <img src="img/bomba.jpg" alt="Bomba de agua SP-QB60">
+        <h2>Bomba de Agua 1/2 HP</h2>
+        <p class="precio-usd">💵 USD $36.00</p>
+       </div>
+
+      <!-- LÁMPARA LED USB -->
+      <div class="producto">
+        <img src="img/lampara.jpg" alt="Lámpara LED USB">
+        <h2>Lámpara LED USB</h2>
+        <p class="precio-usd">💵 USD $6.00</p>
+       </div>
+
+   </div>
+   <!-- Script para convertir CUP → USD automático -->
+    <script>
+        const tasa = 435; // 1 USD = 435 CUP
+        const precios = document.querySelectorAll(".precio");
+
+        precios.forEach(precio => {
+            const texto = precio.textContent.replace(/[^0-9]/g, "");
+            const cup = parseFloat(texto);
+
+            const usd = (cup / tasa).toFixed(2);
+
+            const precioUSD = document.createElement("p");
+            precioUSD.classList.add("precio-usd");
+            precioUSD.textContent = `💵 USD $${usd}`;
+
+            precio.insertAdjacentElement("afterend", precioUSD);
+        });
+    </script>
+  
 
   <!-- 🛒 SECCIÓN DEL CARRITO -->
   <div id="carrito-contenedor">
