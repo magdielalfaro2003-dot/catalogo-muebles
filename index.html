@@ -1754,9 +1754,9 @@
 
       <!-- AIR FRYER -->
       <div class="producto">
-        <img src="img/electro1.jpg" alt="Air Fryer Royal 4L"loading="lazy">
+        <img src="electrodomesticos/electro1.jpg" alt="Air Fryer Royal 4L"loading="lazy">
         </h3>Air Fryer Royal 4L</h3>
-        <p class="precio-usd">💵 USD $65.00</p>
+        <p class="precio" data-usd="65"></p>
         <button class="boton-carrito" onclick="agregarAlCarrito('Freidora Royal 4L',💵 USD $65.00 )">Agregar 🛒</button>
        </div>
 
@@ -1791,23 +1791,26 @@
 
    </div>
    <!-- Script para convertir CUP → USD automático -->
-    <script>
-        const tasa = 435; // 1 USD = 435 CUP
-        const precios = document.querySelectorAll(".precio");
+   <script>
+     const tasa = 435;
+     function cambiarMoneda() {
+       const moneda = document.getElementById("moneda").value;
+       const precios = document.querySelectorAll(".precio");
 
-        precios.forEach(precio => {
-            const texto = precio.textContent.replace(/[^0-9]/g, "");
-            const cup = parseFloat(texto);
+       precios.forEach(precio => {
+         const usd = Number(precio.dataset.usd);
 
-            const usd = (cup / tasa).toFixed(2);
+         if (moneda === "usd") {
+           precio.textContent = `💵 USD $${usd.toFixed(2)}`;
+         } else {
+           const cup = usd * tasa;
+           precio.textContent = `🇨🇺 ${cup.toLocaleString()} CUP`;
+         }
+       });
+     }
 
-            const precioUSD = document.createElement("p");
-            precioUSD.classList.add("precio-usd");
-            precioUSD.textContent = `💵 USD $${usd}`;
-
-            precio.insertAdjacentElement("afterend", precioUSD);
-        });
-    </script>
+     window.onload = cambiarMoneda;
+   </script>
   
 
   <!-- 🛒 SECCIÓN DEL CARRITO -->
